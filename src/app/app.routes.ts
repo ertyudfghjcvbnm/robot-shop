@@ -16,4 +16,9 @@ export const routes: Routes = [
     path: 'cart',
     component: CartComponent,
   },
+  {
+    path: 'deals',
+    title: 'Deals',
+    loadComponent: () => import('./deals/deals.component').then((m) => m.DealsComponent),
+  },
 ];

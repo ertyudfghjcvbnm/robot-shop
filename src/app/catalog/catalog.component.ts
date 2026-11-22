@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
-import allProducts from '../products.json'
+import { ProductsService } from '../products.service';
 
 @Component({
   imports: [ProductDetailsComponent],
@@ -9,5 +9,6 @@ import allProducts from '../products.json'
   templateUrl: './catalog.component.html',
 })
 export class CatalogComponent {
-  products = allProducts;
+  private productsService =inject(ProductsService);
+  products = this.productsService.getProducts();
 }

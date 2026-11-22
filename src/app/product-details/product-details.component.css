@@ -1,6 +1,6 @@
 :host {
   display: flex;
-  justify-content: space-between;
+  gap: 25px;
   padding: 20px 25px;
   border-bottom: 2px solid #999;
 }
@@ -8,14 +8,19 @@
 .details {
   display: flex;
   align-items: center;
+  flex: 1;
+  min-width: 0;
 }
 
 :host img {
   width: 125px;
-  margin-right: 25px;
+  height: auto;
+  flex-shrink: 0;
+  align-self: center;
 }
 
 .price {
+  flex-shrink: 0;
   font-size: 25px;
   border-left: 2px solid #aaa;
   padding-left: 10px;

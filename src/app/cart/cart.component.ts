@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, Signal } from '@angular/core';
 import { CartItemComponent } from '../cart-item/cart-item.component';
 import { IProduct } from '../product.model';
-import allProducts from '../products.json';
+import { CartService } from '../cart.service';
 
 @Component({
   imports: [CartItemComponent],
@@ -10,5 +10,6 @@ import allProducts from '../products.json';
   templateUrl: './cart.component.html',
 })
 export class CartComponent {
-  cartItems: IProduct[] = [allProducts[2], allProducts[4]];
+  private cartService = inject(CartService);
+  cartItems: Signal<IProduct[]> = this.cartService.cart;
 }
