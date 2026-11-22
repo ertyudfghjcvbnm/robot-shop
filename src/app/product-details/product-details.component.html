@@ -1,20 +1,18 @@
-<div class="product">
-  <img [src]="getImageUrl(product())" [alt]="product().name" />
-  <div class="details">
-    <div>
-      <h2>{{ product().name }}</h2>
-      <p>{{ product().description }}</p>
-      <p>Part Type: {{ product().category }}</p>
-      <p>Available inventory: {{ availableInventory() }}</p>
-    </div>
+<img [src]="getImageUrl(product())" [alt]="product().name" />
+<div class="details">
+  <div>
+    <h2>{{ product().name }}</h2>
+    <p>{{ product().description }}</p>
+    <p>Part Type: {{ product().category }}</p>
+    <p>Available inventory: {{ availableInventory() }}</p>
   </div>
-  <div class="price">
-    @if (product().discount > 0) {
-      <p>{{ product().price * (1 - product().discount) | currency }} (Sale)</p>
-    } @else {
-      <p>{{ product().price | currency }}</p>
-    }
-    <button class="cta" (click)="addToCart($event)">Buy</button>
-    <button (click)="(false)">Do nothing</button>
-  </div>
+</div>
+<div class="price">
+  <p [ngClass]="getPriceClasses()">
+    {{ product().price | currency }}
+  </p>
+  @if (product().discount > 0) {
+    <p>{{ product().price * (1 - product().discount) | currency }}</p>
+  }
+  <button class="cta" (click)="addToCart($event)">Buy</button>
 </div>

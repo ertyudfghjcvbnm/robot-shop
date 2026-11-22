@@ -1,9 +1,9 @@
 import { Component, signal, input } from '@angular/core';
 import { IProduct } from '../product.model';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, NgClass } from '@angular/common';
 
 @Component({
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, NgClass],
   selector: 'bot-product-details',
   styleUrl: './product-details.component.css',
   templateUrl: './product-details.component.html',
@@ -19,5 +19,9 @@ export class ProductDetailsComponent {
   addToCart(event: MouseEvent) {
     setTimeout(() => this.availableInventory.update((p) => p - 1), 100);
     console.log(event);
+  }
+
+  getPriceClasses() {
+    return { strikethrough: this.product().discount > 0 };
   }
 }
